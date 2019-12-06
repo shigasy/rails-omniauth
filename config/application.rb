@@ -34,11 +34,22 @@ module RailsOmniauth
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    # クロスドメイン対策は入れておいたほうが良い
+    # config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins "http://localhost:3333/"
+    #     resource "*",
+    #              headers: :any,
+    #              methods: [:get, :post, :options, :head],
+    #              credentials: true
+    #   end
+    # end
 
     # omuniAuthはログイン前のURLとかparamsを保存してcallbackフェーズで復元できるようにしているため必要
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies # Required for all session management
     config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+    config.middleware.use ActionDispatch::Flash
 
 
   end

@@ -266,12 +266,12 @@ Devise.setup do |config|
                   Rails.application.credentials.twitter[:key],
                   Rails.application.credentials.twitter[:secret],
                   scope: 'email',
-                  oauth_callback: "#{ENV['HOST']}/users/auth/twitter/callback"
+                  oauth_callback: "#{ENV['HOST']}/api/v1/users/auth/twitter/callback"
   config.omniauth :google_oauth2,
                   Rails.application.credentials.google[:key],
                   Rails.application.credentials.google[:secret],
                   scope: 'email, profile',
-                  redirect_uri: "http://localhost:3000/users/auth/google_oauth2/callback"
+                  redirect_uri: "http://localhost:3000/api/v1/users/auth/google_oauth2/callback"
   OmniAuth.config.logger = Rails.logger if Rails.env.development? # debug用
 
   config.parent_controller = 'ActionController::Base'
