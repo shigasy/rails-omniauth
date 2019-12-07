@@ -37,7 +37,7 @@ module RailsOmniauth
     # クロスドメイン対策は入れておいたほうが良い
     # config.middleware.insert_before 0, Rack::Cors do
     #   allow do
-    #     origins "http://localhost:3333/"
+    #     origins "http://localhost:3333/", 'https://oshi-loss.com'
     #     resource "*",
     #              headers: :any,
     #              methods: [:get, :post, :options, :head],
